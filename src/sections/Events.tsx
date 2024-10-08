@@ -57,16 +57,16 @@ const resources = [
   },
 ]
 
-export function Resources() {
+export function Events() {
   return (
     <section
-      id="resources"
-      aria-labelledby="resources-title"
-      className="scroll-mt-14 py-16 sm:scroll-mt-32 sm:py-20 lg:py-32"
+      id="events"
+      aria-labelledby="events-title"
+      className="py-16 m:py-20 lg:py-32"
     >
       <Container>
         <SectionHeading number="3" id="resources-title">
-          Resources
+          Events
         </SectionHeading>
         <p className="mt-8 font-display text-4xl font-bold tracking-tight text-slate-900">
           Tools and resources you can use to get started even faster and

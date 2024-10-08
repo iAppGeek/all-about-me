@@ -117,7 +117,7 @@ function ImageClipPaths({
   )
 }
 
-export function Staff() {
+export function Community() {
   let id = useId()
   let [tabOrientation, setTabOrientation] = useState('horizontal')
 
@@ -138,14 +138,14 @@ export function Staff() {
 
   return (
     <section
-      id="our-staff"
-      aria-labelledby="our-staff-title"
-      className="scroll-mt-14 pb-8 pt-16 sm:scroll-mt-32 sm:pb-10 sm:pt-20 lg:pb-16 lg:pt-32"
+      id="our-community"
+      aria-labelledby="our-community-title"
+      className="pb-8 pt-16 sm:pb-10 sm:pt-20 lg:pb-16 lg:pt-32"
     >
       <ImageClipPaths id={id} />
       <Container>
-      <SectionHeading number="4" id="our-staff-title">
-          Our Staff
+      <SectionHeading number="2" id="our-community-title">
+          Our Community
         </SectionHeading>
         <p className="mt-8 font-display text-5xl font-extrabold tracking-tight text-slate-900 sm:text-6xl">
           The School Team

@@ -33,16 +33,16 @@ const tableOfContents = {
   },
 }
 
-export function AboutTheSchool() {
+export function AboutUs() {
   return (
     <section
-      id="about-the-school"
-      aria-labelledby="about-the-school-title"
-      className="scroll-mt-14 py-16 sm:scroll-mt-32 sm:py-20 lg:py-32"
+      id="about-us"
+      aria-labelledby="about-us-title"
+      className="py-16 sm:py-20 lg:py-32"
     >
       <Container>
         <SectionHeading number="1" id="about-the-school-title">
-          About the School
+          About Us
         </SectionHeading>
         <p className="mt-8 font-display text-4xl font-bold tracking-tight text-slate-900">
         Students and staff have worked very hard to make HSHB the outstanding school it is and we are all proud of our achievements.
