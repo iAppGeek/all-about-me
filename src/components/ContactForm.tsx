@@ -1,20 +1,76 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
+'use client';
+
+import { FormEventHandler, useState } from 'react';
+
+function SuccessIcon() {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="stroke-current shrink-0 h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+        >
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+        </svg>
+    );
+}
+function ErrorIcon() {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="stroke-current shrink-0 h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+        >
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+        </svg>
+    );
+}
+
+
+
 import { BuildingOffice2Icon, EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
 
 export function ContactForm() {
+  const [status, setStatus] = useState<String | null>(null);
+    const [error, setError] = useState<String | null>(null);
+
+    const handleFormSubmit: FormEventHandler = async (event) => {
+        event.preventDefault();
+        try {
+            setStatus('pending');
+            setError(null);
+            const myForm = event.target;
+            //@ts-ignore 
+            const formData = new FormData(myForm);
+            const res = await fetch('/__forms.html', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                //@ts-ignore 
+                body: new URLSearchParams(formData).toString()
+            });
+            if (res.status === 200) {
+                setStatus('ok');
+            } else {
+                setStatus('error');
+                setError(`${res.status} ${res.statusText}`);
+            }
+        } catch (e) {
+            setStatus('error');
+            setError(`${e}`);
+        }
+    };
+
   return (
     <div className="relative isolate bg-white">
       <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
@@ -92,7 +148,8 @@ export function ContactForm() {
           </div>
         </div>
         {/* @ts-ignore */}
-        <form className="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48" name="contact-us-form" method="POST" data-netlify="true">
+        <form className="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48" name="contact-us-form" onSubmit={handleFormSubmit}>
+          <input type="hidden" name="form-name" value="contact-us-form" />
           <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
               <div>
@@ -167,7 +224,19 @@ export function ContactForm() {
               </div>
             </div>
             <div className="mt-8 flex justify-end">
-              <button
+              {status === 'ok' && (
+                        <div className="alert alert-success">
+                            <SuccessIcon />
+                            Submitted!
+                        </div>
+                    )}
+                    {status === 'error' && (
+                        <div className="alert alert-error">
+                            <ErrorIcon />
+                            {error}
+                        </div>
+                    )}
+                    <button
                 type="submit"
                 className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
