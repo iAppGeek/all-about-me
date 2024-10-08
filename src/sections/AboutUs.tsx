@@ -4,6 +4,8 @@ import {
   ExpandableButton,
   ExpandableItems,
 } from '@/components/Expandable'
+import {FaqSample} from "@/components/Faq";
+import {FaqAcordian} from "@/components/CenteredAccordion";
 import { SectionHeading } from '@/components/SectionHeading'
 
 const tableOfContents = {
@@ -44,13 +46,8 @@ export function AboutUs() {
         <SectionHeading number="1" id="about-the-school-title">
           About Us
         </SectionHeading>
-        <p className="mt-8 font-display text-4xl font-bold tracking-tight text-slate-900">
-        Students and staff have worked very hard to make HSHB the outstanding school it is and we are all proud of our achievements.
-        </p>
-        <p className="mt-4 text-lg tracking-tight text-slate-700">
-          “Everything Starts as a Square” is comprised of 240 tightly edited,
-          highly visual pages designed to teach you everything you need to know
-          about icon design with no unnecessary filler.
+        <p className="mt-8 font-display text-xl font-bold tracking-tight text-slate-900">
+          We don’t just teach our children the Greek language, we also educate and enhance their knowledge of Greek and Cypriot lifestyles; from the Greek Orthodox religion, to the history and culture of the Hellenes. This includes traditional costumes, dance and music, celebrations of popular events, folk plays, what it was like to be Greek in our grandparents' time, and to move with changing times.
         </p>
         <Expandable>
           <ol role="list" className="mt-16 space-y-10 sm:space-y-16">
@@ -92,6 +89,9 @@ export function AboutUs() {
           <ExpandableButton>See more</ExpandableButton>
         </Expandable>
       </Container>
+
+      <FaqSample />
+      <FaqAcordian />
     </section>
   )
 }

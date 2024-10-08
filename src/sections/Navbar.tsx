@@ -51,7 +51,6 @@ export function Navbar() {
         .filter((el): el is HTMLElement => el !== null)
       let bodyRect = document.body.getBoundingClientRect()
       let offset = bodyRect.top + navBarRef.current.offsetHeight + 1
-      console.log(offset);
       if (window.scrollY >= Math.floor(bodyRect.height) - window.innerHeight) {
         setActiveIndex(sections.length - 1)
         return
@@ -67,8 +66,6 @@ export function Navbar() {
           break
         }
       }
-
-      console.log("set index", newActiveIndex)
       setActiveIndex(newActiveIndex)
     }
 
