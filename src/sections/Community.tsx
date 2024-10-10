@@ -23,43 +23,7 @@ import waylonHydenImage from '@/images/avatars/waylon-hyden.jpg'
 
 const days = [
   {
-    name: 'Education',
-    date: 'Our Teachers',
-    speakers: [
-      {
-        name: 'Steven McHail',
-        role: 'Designer at Globex Corporation',
-        image: stevenMchailImage,
-      },
-      {
-        name: 'Jaquelin Isch',
-        role: 'UX Design at InGen',
-        image: jaquelinIschImage,
-      },
-      {
-        name: 'Dianne Guilianelli',
-        role: 'General Manager at Initech',
-        image: dianneGuilianelliImage,
-      },
-      {
-        name: 'Ronni Cantadore',
-        role: 'Design Engineer at Weyland-Yutani',
-        image: ronniCantadoreImage,
-      },
-      {
-        name: 'Erhart Cockrin',
-        role: 'Product Lead at Cyberdyne Systems',
-        image: erhartCockrinImage,
-      },
-      {
-        name: 'Parker Johnson',
-        role: 'UI Designer at MomCorp',
-        image: parkerJohnsonImage,
-      },
-    ],
-  },
-  {
-    name: 'PTA',
+    name: 'Get to Know',
     date: 'Our Commitee',
     speakers: [
       {
@@ -94,6 +58,42 @@ const days = [
       },
     ],
   },
+  {
+    name: 'Get to Know',
+    date: 'Our Teachers',
+    speakers: [
+      {
+        name: 'Steven McHail',
+        role: 'Designer at Globex Corporation',
+        image: stevenMchailImage,
+      },
+      {
+        name: 'Jaquelin Isch',
+        role: 'UX Design at InGen',
+        image: jaquelinIschImage,
+      },
+      {
+        name: 'Dianne Guilianelli',
+        role: 'General Manager at Initech',
+        image: dianneGuilianelliImage,
+      },
+      {
+        name: 'Ronni Cantadore',
+        role: 'Design Engineer at Weyland-Yutani',
+        image: ronniCantadoreImage,
+      },
+      {
+        name: 'Erhart Cockrin',
+        role: 'Product Lead at Cyberdyne Systems',
+        image: erhartCockrinImage,
+      },
+      {
+        name: 'Parker Johnson',
+        role: 'UI Designer at MomCorp',
+        image: parkerJohnsonImage,
+      },
+    ],
+  }
 ]
 
 function ImageClipPaths({
@@ -140,20 +140,15 @@ export function Community() {
     <section
       id="our-community"
       aria-labelledby="our-community-title"
-      className="pb-8 pt-16 sm:pb-10 sm:pt-20 lg:pb-16 lg:pt-32"
-    >
+      className="py-8 m:py-10 lg:py-8">
       <ImageClipPaths id={id} />
       <Container>
-      <SectionHeading number="2" id="our-community-title">
-          Our Community
-        </SectionHeading>
         <p className="mt-8 font-display text-5xl font-extrabold tracking-tight text-slate-900 sm:text-6xl">
-          The School Team
+          The School Community
         </p>
         <div className="mx-auto max-w-2xl lg:mx-0">
           <p className="mt-4 font-display text-2xl tracking-tight text-blue-900">
-            Learn from the experts on the cutting-edge of deception at the most
-            sinister companies.
+            Get to know the individuals that help keep the school running smoothly
           </p>
         </div>
         <TabGroup
@@ -166,7 +161,7 @@ export function Community() {
               {({ selectedIndex }) => (
                 <>
                   {days.map((day, dayIndex) => (
-                    <div key={day.name} className="relative lg:pl-8">
+                    <div key={day.name + dayIndex} className="relative lg:pl-8">
                       <DiamondIcon
                         className={clsx(
                           'absolute left-[-0.5px] top-[0.5625rem] hidden h-1.5 w-1.5 overflow-visible lg:block',
@@ -203,9 +198,9 @@ export function Community() {
             </TabList>
           </div>
           <TabPanels className="lg:col-span-3">
-            {days.map((day) => (
+            {days.map((day, index) => (
               <TabPanel
-                key={day.name}
+                key={day.name + index}
                 className="grid grid-cols-1 gap-x-8 gap-y-10 ui-not-focus-visible:outline-none sm:grid-cols-2 sm:gap-y-16 md:grid-cols-3"
                 unmount={false}
               >

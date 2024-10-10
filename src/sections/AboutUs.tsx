@@ -40,16 +40,13 @@ export function AboutUs() {
     <section
       id="about-us"
       aria-labelledby="about-us-title"
-      className="py-16 sm:py-20 lg:py-32"
+      className="py-8 m:py-10 lg:py-8"
     >
       <Container>
-        <SectionHeading number="1" id="about-the-school-title">
-          About Us
-        </SectionHeading>
         <p className="mt-8 font-display text-xl font-bold tracking-tight text-slate-900">
           We don’t just teach our children the Greek language, we also educate and enhance their knowledge of Greek and Cypriot lifestyles; from the Greek Orthodox religion, to the history and culture of the Hellenes. This includes traditional costumes, dance and music, celebrations of popular events, folk plays, what it was like to be Greek in our grandparents' time, and to move with changing times.
         </p>
-        <Expandable>
+        {/* <Expandable>
           <ol role="list" className="mt-16 space-y-10 sm:space-y-16">
             <ExpandableItems>
               {Object.entries(tableOfContents).map(([title, pages]) => (
@@ -87,10 +84,10 @@ export function AboutUs() {
             </ExpandableItems>
           </ol>
           <ExpandableButton>See more</ExpandableButton>
-        </Expandable>
+        </Expandable> */}
       </Container>
 
-      <FaqSample />
+      {/* <FaqSample /> */}
       <FaqAcordian />
     </section>
   )

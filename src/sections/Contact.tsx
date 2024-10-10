@@ -20,8 +20,7 @@ export function Contact() {
     <section
       id="contact"
       aria-labelledby="contact-title"
-      className="relative pb-3 pt-8 sm:pb-16 sm:pt-10 lg:pt-16"
-    >
+      className="py-4 m:py-6 lg:py-10">
       <Container className='pb-6'>        
       </Container>
       <ContactForm />
